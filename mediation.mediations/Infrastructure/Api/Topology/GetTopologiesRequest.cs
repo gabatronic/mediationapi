@@ -1,6 +1,3 @@
 namespace mediation.mediations.Infrastructure.Api.Topology;
 
-public class GetTopologiesRequest
-{
-    
-}
+public record GetTopologiesRequest(Guid ScopeId);

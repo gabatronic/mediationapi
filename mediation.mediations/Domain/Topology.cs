@@ -1,6 +1,6 @@
 namespace mediation.mediations.Domain;
 
-public class Topoligy
+public class Topology
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

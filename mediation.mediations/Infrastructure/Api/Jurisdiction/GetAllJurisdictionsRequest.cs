@@ -1,3 +1,3 @@
-namespace mediation.mediations.Infrastructure.Api.Jurisdition;
+namespace mediation.mediations.Infrastructure.Api.Jurisdiction;
 
-public record GetAllJurisditionsRequest(int Page = 0, int PageItems = 0);
+public record GetAllJurisdictionsRequest(int Page = 0, int PageItems = 0);

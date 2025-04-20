@@ -1,3 +1,3 @@
-namespace mediation.mediations.Infrastructure.Api.Jurisdition;
+namespace mediation.mediations.Infrastructure.Api.Jurisdiction;
 
-public record JurisditionDto(Guid Id, string Name);
+public record JurisdictionDto(Guid Id, string Name);
