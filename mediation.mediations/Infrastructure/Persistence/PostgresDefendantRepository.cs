@@ -1,31 +1,35 @@
 using mediation.mediations.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace mediation.mediations.Infrastructure.Persistence;
 
-public class PostgresDefendantRepository : IDefendantRepository
+public class PostgresDefendantRepository(MediationDbContext dbContext) : IDefendantRepository
 {
     public async Task<bool> Create(Defendant defendant)
     {
-        throw new NotImplementedException();
+        await dbContext.Defendants.AddAsync(defendant);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
     public async Task<bool> Update(Defendant defendant)
     {
-        throw new NotImplementedException();
+        dbContext.Defendants.Update(defendant);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
     public async Task<bool> Delete(Defendant defendant)
     {
-        throw new NotImplementedException();
+        dbContext.Defendants.Remove(defendant);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
     public async Task<Defendant?> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        return await dbContext.Defendants.FindAsync(id);
     }
 
     public async Task<IEnumerable<Defendant>> GetAll()
     {
-        throw new NotImplementedException();
+        return await dbContext.Defendants.ToListAsync();
     }
 }

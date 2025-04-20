@@ -1,31 +1,35 @@
 using mediation.mediations.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace mediation.mediations.Infrastructure.Persistence;
 
-public class PostgresMediationRepository : IMediationRepository
+public class PostgresMediationRepository(MediationDbContext dbContext) : IMediationRepository
 {
     public async Task<bool> Create(Mediation mediation)
     {
-        throw new NotImplementedException();
+        await dbContext.Mediations.AddAsync(mediation);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
     public async Task<bool> Update(Mediation mediation)
     {
-        throw new NotImplementedException();
+        dbContext.Mediations.Update(mediation);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
     public async Task<bool> Delete(Mediation mediation)
     {
-        throw new NotImplementedException();
+        dbContext.Mediations.Remove(mediation);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
     public async Task<Mediation?> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        return await dbContext.Mediations.FindAsync(id);
     }
 
     public async Task<IEnumerable<Mediation>> GetAll()
     {
-        throw new NotImplementedException();
+        return await dbContext.Mediations.ToListAsync();
     }
 }

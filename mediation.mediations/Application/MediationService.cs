@@ -4,7 +4,11 @@ using mediation.mediations.Infrastructure.Api.Mediation;
 
 namespace mediation.mediations.Application;
 
-public class MediationService(IMediationRepository mediationRepository, IApplicantRepository applicantRepository, IDefendantRepository defendantRepository)
+public class MediationService(
+    IMediationRepository mediationRepository, 
+    IApplicantRepository applicantRepository, 
+    IDefendantRepository defendantRepository,
+    INotificationService<Mediation> notificationService)
 {
     private readonly MediationBuilder _mediationBuilder = new MediationBuilder();
     
@@ -32,7 +36,8 @@ public class MediationService(IMediationRepository mediationRepository, IApplica
         }
         
         await mediationRepository.Create(mediation);
-        // Send notification to Channels
+        
+        await notificationService.SendMessage(mediation);
     }
 }
 
