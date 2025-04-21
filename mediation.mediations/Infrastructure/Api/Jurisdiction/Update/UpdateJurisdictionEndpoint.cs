@@ -1,5 +1,6 @@
 using FastEndpoints;
 using mediation.mediations.Application;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
 namespace mediation.mediations.Infrastructure.Api.Jurisdiction.Update;
@@ -9,7 +10,7 @@ public class UpdateJurisdictionEndpoint(MediationTermsService termsService) : En
     public override void Configure()
     {
         Put("/api/jurisdictions/{Id}");
-        Description(e => e.Produces(200));
+        Description(e => e.Produces(200).WithGroupName("Jurisdictions"));
     }
 
     public override async Task HandleAsync(UpdateJurisdictionRequest req, CancellationToken ct)

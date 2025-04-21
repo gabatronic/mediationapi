@@ -1,5 +1,7 @@
 using FastEndpoints;
 using Mediation.Auth.Application;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Auth.Infrastructure.Api.Auth.Login;
 
@@ -8,6 +10,7 @@ public class LoginEndpoint(UserService userService) : Endpoint<LoginRequest, Log
     public override void Configure()
     {
         Post("/api/auth/login");
+        Description(e => e.WithGroupName("Auth").WithTags("Login"));
         AllowAnonymous();
     }
 

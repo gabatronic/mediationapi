@@ -1,5 +1,6 @@
 using FastEndpoints;
 using mediation.mediations.Application;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
 namespace mediation.mediations.Infrastructure.Api.Mediation.Delete;
@@ -9,7 +10,7 @@ public class DeleteMediationEndpoint(MediationService mediationService) : Endpoi
     public override void Configure()
     {
         Delete("/api/mediations/{Id}");
-        Description(e => e.Produces(200));
+        Description(e => e.Produces(200).WithGroupName("Mediation"));
     }
 
     public override async Task HandleAsync(DeleteMediationRequest req, CancellationToken ct)

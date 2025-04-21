@@ -1,5 +1,7 @@
 using FastEndpoints;
 using mediation.mediations.Domain;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 
 namespace mediation.mediations.Infrastructure.Api.Jurisdiction;
@@ -9,6 +11,7 @@ public class GetAllJurisdictionsEndpoint(IMediationTermsRepository termsReposito
     public override void Configure()
     {
         Get("/api/jurisdictions/");
+        Description(e => e.Produces(200).WithGroupName("Jurisdictions"));
         AllowAnonymous();
     }
 
