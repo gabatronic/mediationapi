@@ -1,6 +1,7 @@
 using System.Threading.Channels;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Mediation.Auth.Infrastructure;
 using  mediation.mediations.Infrastructure;
 using MediationWorker;
 using Mediation.Plans.Infrastructure;
@@ -21,6 +22,10 @@ var chnBoundedChannelOptions = new BoundedChannelOptions(2000)
 builder.Services.AddSingleton(Channel.CreateBounded<NewMediationItem>(chnBoundedChannelOptions));
 builder.Services.AddMediationServices(builder.Configuration);
 builder.Services.AddPlansServices(builder.Configuration);
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+builder.Services.AddAuthServices(builder.Configuration);
 builder.Services.AddHostedService<MediationWorker.MediationWorker>();
 
 var app = builder.Build();
@@ -32,4 +37,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseFastEndpoints().UseSwaggerGen();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();

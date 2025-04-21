@@ -1,37 +1,64 @@
 using Mediation.Auth.Application;
 using Mediation.Auth.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mediation.Auth.Infrastructure.Persistence;
 
-public class PostGresUserRepository : IUserRepository
+public class PostGresUserRepository(AuthDbContext dbContext) : IUserRepository
 {
-    public Task<bool> Add(User user)
+    public async Task<bool> Add(User user)
     {
-        throw new NotImplementedException();
+        await dbContext.Users.AddAsync(user);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
-    public Task<bool> Update(User user)
+    public async Task<bool> Update(User user)
     {
-        throw new NotImplementedException();
+        dbContext.Users.Update(user);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
-    public Task<bool> Delete(Guid userId)
+    public async Task<bool> Delete(Guid userId)
     {
-        throw new NotImplementedException();
+        var user = await dbContext.Users.FindAsync(userId);
+        if (user == null) return false;
+        
+        dbContext.Users.Remove(user);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
-    public Task<bool> ChangePassword(Guid userId, string newPassword)
+    public async Task<bool> ChangePassword(Guid userId, string newPassword)
     {
-        throw new NotImplementedException();
+        var user = await dbContext.Users.FindAsync(userId);
+        if (user == null) return false;
+        
+        // Create a new user object with the updated password
+        // since password is init-only
+        var updatedUser = new User
+        {
+            Id = user.Id,
+            Email = user.Email,
+            Name = user.Name,
+            Password = newPassword,
+            Roles = user.Roles
+        };
+        
+        dbContext.Users.Remove(user);
+        await dbContext.Users.AddAsync(updatedUser);
+        return await dbContext.SaveChangesAsync() > 0;
     }
 
-    public Task<IEnumerable<User>> GetAll()
+    public async Task<IEnumerable<User>> GetAll()
     {
-        throw new NotImplementedException();
+        return await dbContext.Users
+            .Include(u => u.Roles)
+            .ToListAsync();
     }
 
-    public Task<User> GetByEmail(string email)
+    public async Task<User?> GetByEmail(string email)
     {
-        throw new NotImplementedException();
+        return await dbContext.Users
+            .Include(u => u.Roles)
+            .FirstOrDefaultAsync(u => u.Email == email);
     }
 }

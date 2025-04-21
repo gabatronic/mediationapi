@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Mediation.Auth\Mediation.Auth.csproj" />
       <ProjectReference Include="..\mediation.mediations\mediation.mediations.csproj" />
       <ProjectReference Include="..\Mediation.Plans\Mediation.Plans.csproj" />
     </ItemGroup>
