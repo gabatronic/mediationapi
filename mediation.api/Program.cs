@@ -22,9 +22,7 @@ var chnBoundedChannelOptions = new BoundedChannelOptions(2000)
 builder.Services.AddSingleton(Channel.CreateBounded<NewMediationItem>(chnBoundedChannelOptions));
 builder.Services.AddMediationServices(builder.Configuration);
 builder.Services.AddPlansServices(builder.Configuration);
-builder.Services.AddAuthorization();
-builder.Services.AddAuthentication();
-builder.Services.AddAuthorization();
+// Remove duplicate auth registrations - AuthServices handles both
 builder.Services.AddAuthServices(builder.Configuration);
 builder.Services.AddHostedService<MediationWorker.MediationWorker>();
 
