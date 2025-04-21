@@ -48,9 +48,9 @@ public class PostgresMediationTermsRepository(MediationDbContext dbContext) : IM
         return await dbContext.SaveChangesAsync() > 0;
     }
 
-    public async Task<bool> DeleteScope(string name)
+    public async Task<bool> DeleteScope(Guid id)
     {
-        var scope = await dbContext.Scopes.FirstOrDefaultAsync(s => s.Name == name);
+        var scope = await dbContext.Scopes.FindAsync(id);
         if (scope == null) return false;
         
         dbContext.Scopes.Remove(scope);

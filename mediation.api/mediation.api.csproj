@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\mediation.mediations\mediation.mediations.csproj" />
+      <ProjectReference Include="..\Mediation.Plans\Mediation.Plans.csproj" />
     </ItemGroup>
 
 </Project>

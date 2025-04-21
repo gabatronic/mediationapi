@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediationWorker", "Mediatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediation.api", "mediation.api\mediation.api.csproj", "{80226D6F-868A-4A4A-9917-97D84476B5D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediation.Plans", "Mediation.Plans\Mediation.Plans.csproj", "{2B6AE077-BE17-4E3B-89EC-0281BE29595C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B6AE077-BE17-4E3B-89EC-0281BE29595C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B6AE077-BE17-4E3B-89EC-0281BE29595C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B6AE077-BE17-4E3B-89EC-0281BE29595C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B6AE077-BE17-4E3B-89EC-0281BE29595C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -10,7 +10,7 @@ public interface IMediationTermsRepository
     
     public Task<bool> CreateScope(Scope scope);
     public Task<bool> UpdateScope(Scope scope);
-    public Task<bool> DeleteScope(string name);
+    public Task<bool> DeleteScope(Guid id);
     public Task<Scope?> GetScope(Guid id);
     public Task<IEnumerable<Scope>> GetAllScopes(Guid jurisdictionId);
     

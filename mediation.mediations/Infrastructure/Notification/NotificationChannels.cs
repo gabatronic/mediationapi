@@ -7,8 +7,7 @@ namespace mediation.mediations.Infrastructure.Notification;
 
 public class NotificationChannels(Channel<NewMediationItem> channel, 
     IMediationTermsRepository mediationTermsRepository,
-    IApplicantRepository applicantRepository,
-    IMediationRepository mediationRepository) : INotificationService<Mediation>
+    IApplicantRepository applicantRepository) : INotificationService<Mediation>
 {
     public async Task SendMessage(Mediation message)
     {

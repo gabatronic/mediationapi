@@ -21,7 +21,9 @@ public static class MediationServicesBuilder
         services.AddScoped<IMediationRepository, PostgresMediationRepository>();
         services.AddScoped<IMediationTermsRepository, PostgresMediationTermsRepository>();
         services.AddScoped<INotificationService<Mediation>, NotificationChannels>();
+        services.AddScoped<MediationDbContext>();
         services.AddScoped<MediationService>();
+        services.AddScoped<MediationTermsService>();
         
         return services;
     }
