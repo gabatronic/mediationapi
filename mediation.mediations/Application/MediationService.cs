@@ -39,6 +39,14 @@ public class MediationService(
         
         await notificationService.SendMessage(mediation);
     }
+
+    public async Task<Mediation?> GetMediationById(Guid id) => await mediationRepository.GetById(id);
+    
+    public async Task<bool> UpdateMediation(Mediation mediation) => await mediationRepository.Update(mediation);
+    
+    public async Task<bool> DeleteMediation(Mediation mediation) => await mediationRepository.Delete(mediation);
+    
+    public async Task<IEnumerable<Mediation>> GetAllMediations() => await mediationRepository.GetAll();
 }
 
 

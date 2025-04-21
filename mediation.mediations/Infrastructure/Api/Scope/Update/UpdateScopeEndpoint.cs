@@ -8,7 +8,7 @@ public class UpdateScopeEndpoint(MediationTermsService termsService) : Endpoint<
 {
     public override void Configure()
     {
-        Put("/v1/jurisdictions/{JurisdictionId}/scopes/{Id}");
+        Put("/api/scopes/{Id}");
         Description(endpoint => endpoint.Produces(201));
     }
 
