@@ -9,8 +9,8 @@ public class DeleteMediationEndpoint(MediationService mediationService) : Endpoi
 {
     public override void Configure()
     {
-        Delete("/api/mediations/{Id}");
-        Description(e => e.Produces(200).WithGroupName("Mediation"));
+        Delete("/api/mediation/{Id}");
+        Description(e => e.Produces(200).WithTags("Mediation"));
     }
 
     public override async Task HandleAsync(DeleteMediationRequest req, CancellationToken ct)

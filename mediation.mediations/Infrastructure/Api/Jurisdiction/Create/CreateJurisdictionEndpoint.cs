@@ -10,7 +10,7 @@ public class CreateJurisdictionEndpoint(MediationTermsService  termsService) : E
     public override void Configure()
     {
         Post("/api/jurisdictions");
-        Description(e => e.Produces(201).WithGroupName("Jurisdictions"));
+        Description(e => e.Produces(201).WithTags("Jurisdictions"));
     }
 
     public override async Task HandleAsync(CreateJurisdictionRequest req, CancellationToken ct)

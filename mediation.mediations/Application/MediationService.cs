@@ -16,6 +16,24 @@ public class MediationService(
     
     public async Task CreateMediation(Mediation mediation)
     {
+        await ValidateMediation(mediation);
+        await mediationRepository.Create(mediation);
+        await notificationService.SendMessage(mediation);
+    }
+
+    public async Task<Mediation?> GetMediationById(Guid id) => await mediationRepository.GetById(id);
+
+    public async Task<bool> UpdateMediation(Mediation mediation)
+    {
+        await ValidateMediation(mediation);
+        return await mediationRepository.Update(mediation);
+    }
+    public async Task<bool> DeleteMediation(Mediation mediation) => await mediationRepository.Delete(mediation);
+    
+    public async Task<IEnumerable<Mediation>> GetAllMediations() => await mediationRepository.GetAll();
+
+    private async Task ValidateMediation(Mediation mediation)
+    {
         var applicantExist = await applicantRepository.GetById(mediation.ApplicantId);
         
         if (applicantExist == null)
@@ -34,19 +52,7 @@ public class MediationService(
                 throw new InvalidOperationException($"Cannot create defendant with id {mediation.DefendantId}");
             await defendantRepository.Create(defendantExists);
         }
-        
-        await mediationRepository.Create(mediation);
-        
-        await notificationService.SendMessage(mediation);
     }
-
-    public async Task<Mediation?> GetMediationById(Guid id) => await mediationRepository.GetById(id);
-    
-    public async Task<bool> UpdateMediation(Mediation mediation) => await mediationRepository.Update(mediation);
-    
-    public async Task<bool> DeleteMediation(Mediation mediation) => await mediationRepository.Delete(mediation);
-    
-    public async Task<IEnumerable<Mediation>> GetAllMediations() => await mediationRepository.GetAll();
 }
 
 

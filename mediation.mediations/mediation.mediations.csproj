@@ -25,7 +25,6 @@
     <ItemGroup>
       <Folder Include="Infrastructure\Api\Jurisdiction\Delete\" />
       <Folder Include="Infrastructure\Api\Mediation\Delete\" />
-      <Folder Include="Infrastructure\Api\Mediation\Update\" />
     </ItemGroup>
 
 </Project>

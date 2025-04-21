@@ -1,6 +1,7 @@
 using FastEndpoints;
 using Mediation.Auth.Application;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Auth.Infrastructure.Api.User.Get;
 
@@ -9,7 +10,7 @@ public class GetUserEndpoint(IUserRepository userRepository) : Endpoint<GetUserR
     public override void Configure()
     {
         Get("/api/users/{Email}");
-        Description(e => e.WithGroupName("Users"));
+        Description(e => e.WithTags("Users"));
     }
 
     public override async Task HandleAsync(GetUserRequest req, CancellationToken ct)

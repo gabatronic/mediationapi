@@ -9,7 +9,7 @@ public class DeleteScopeEndpoint(MediationTermsService termsService) : Endpoint<
     public override void Configure()
     {
         Delete("/api/scopes/{Id}");
-        Description(endpoint => endpoint.Produces(201));
+        Description(endpoint => endpoint.Produces(201).WithTags("Scopes"));
     }
 
     public override async Task HandleAsync(DeleteScopeRequest req, CancellationToken ct)

@@ -11,7 +11,7 @@ public class GetAllJurisdictionsEndpoint(IMediationTermsRepository termsReposito
     public override void Configure()
     {
         Get("/api/jurisdictions/");
-        Description(e => e.Produces(200).WithGroupName("Jurisdictions"));
+        Description(e => e.Produces(200).WithTags("Jurisdictions"));
         AllowAnonymous();
     }
 

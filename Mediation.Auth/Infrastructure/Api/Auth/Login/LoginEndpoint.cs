@@ -10,7 +10,7 @@ public class LoginEndpoint(UserService userService) : Endpoint<LoginRequest, Log
     public override void Configure()
     {
         Post("/api/auth/login");
-        Description(e => e.WithGroupName("Auth").WithTags("Login"));
+        Description(e => e.WithTags("Auth"));
         AllowAnonymous();
     }
 

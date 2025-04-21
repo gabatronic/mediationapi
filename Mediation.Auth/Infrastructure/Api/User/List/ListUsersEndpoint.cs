@@ -2,6 +2,7 @@ using FastEndpoints;
 using Mediation.Auth.Application;
 using Mediation.Auth.Infrastructure.Api.User.Get;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Auth.Infrastructure.Api.User.List;
 
@@ -10,7 +11,7 @@ public class ListUsersEndpoint(IUserRepository userRepository) : EndpointWithout
     public override void Configure()
     {
         Get("/api/users");
-        Description(e => e.WithGroupName("Users"));
+        Description(e => e.WithTags("Users"));
     }
 
     public override async Task HandleAsync(CancellationToken ct)

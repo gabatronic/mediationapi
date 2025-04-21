@@ -17,6 +17,7 @@ public static class AuthServicesBuilder
         services.AddScoped<IUserRepository, PostGresUserRepository>();
         services.AddScoped<IRoleRepository, PostgresRoleRepository>();
         services.AddScoped<ITokenService, JwtTokenService.JwtTokenService>();
+        services.AddScoped<RoleService>();
         services.AddScoped<UserService>();
         
         return services;

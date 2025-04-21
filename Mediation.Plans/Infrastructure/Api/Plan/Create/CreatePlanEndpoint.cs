@@ -9,7 +9,7 @@ public class CreatePlanEndpoint(PlansService service) : Endpoint<CreatePlanReque
     public override void Configure()
     {
         Post("/api/plans");
-        Description(e => e.Produces(200));
+        Description(e => e.Produces(200).WithTags("Plans"));
     }
 
     public override async Task HandleAsync(CreatePlanRequest request, CancellationToken cancellationToken)

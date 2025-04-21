@@ -1,6 +1,7 @@
 using FastEndpoints;
 using Mediation.Auth.Application;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Auth.Infrastructure.Api.User.Delete;
 
@@ -9,7 +10,7 @@ public class DeleteUserEndpoint(IUserRepository userRepository) : Endpoint<Delet
     public override void Configure()
     {
         Delete("/api/users/{Id}");
-        Description(e => e.WithGroupName("Users"));
+        Description(e => e.WithTags("Users"));
     }
 
     public override async Task HandleAsync(DeleteUserRequest req, CancellationToken ct)

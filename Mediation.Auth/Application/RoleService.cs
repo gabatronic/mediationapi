@@ -4,30 +4,47 @@ namespace Mediation.Auth.Application;
 
 public class RoleService(IRoleRepository roleRepository)
 {
-    public async Task<bool> CreateRole(Guid id, string roleName)
+    public async Task<bool> CreateRole(Guid id, string name, string description = "")
     {
-        throw new NotImplementedException();
+        var role = new Role
+        {
+            Id = id,
+            Name = name,
+            Description = description
+        };
+        
+        return await roleRepository.Add(role);
     }
+    
     public async Task<bool> DeleteRole(Guid id)
     {
-        throw new NotImplementedException();
+        return await roleRepository.Remove(id);
     }
-    public async Task<bool> UpdateRole(Guid id)
+    
+    public async Task<bool> UpdateRole(Guid id, string name, string description)
     {
-        throw new NotImplementedException();
+        var role = new Role
+        {
+            Id = id,
+            Name = name,
+            Description = description
+        };
+        
+        return await roleRepository.Update(role);
     }
-    public async Task<bool> AssingRole(Guid userId, Guid roleId)
+    
+    public async Task<bool> AssignRole(Guid userId, Guid roleId)
     {
-        throw new NotImplementedException();
+        return await roleRepository.AssignRole(userId, roleId);
     }
 
     public async Task<bool> UnassignRole(Guid userId, Guid roleId)
     {
-        
-    }
-    public async Task<List<Role>> GetAllRoles()
-    {
-        throw new NotImplementedException();
+        return await roleRepository.UnassignRole(userId, roleId);
     }
     
+    public async Task<IEnumerable<Role>> GetAllRoles()
+    {
+        return await roleRepository.GetAll();
+    }
 }

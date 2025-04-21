@@ -9,7 +9,7 @@ public class CreateTopologyEndpoint(MediationTermsService termsService) : Endpoi
     public override void Configure()
     {
         Post("/api/scopes/{ScopeId}/topologies");
-        Description(e => e.Produces(201));
+        Description(e => e.Produces(201).WithTags("Topologies"));
     }
 
     public override async Task HandleAsync(CreateTopologyRequest req, CancellationToken ct)

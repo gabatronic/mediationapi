@@ -1,5 +1,6 @@
 using FastEndpoints;
 using Mediation.Plans.Application;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Plans.Infrastructure.Api.Plan.Update;
 
@@ -8,6 +9,7 @@ public class UpdatePlanEndpoint(PlansService plansService) : Endpoint<UpdatePlan
     public override void Configure()
     {
         Put("/api/plans/{Id}");
+        Description(e => e.Produces(201).WithTags("Plans"));
     }
 
     public override async Task HandleAsync(UpdatePlanRequest req, CancellationToken ct)

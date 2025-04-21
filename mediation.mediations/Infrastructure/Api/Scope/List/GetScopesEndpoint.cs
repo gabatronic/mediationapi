@@ -10,7 +10,7 @@ public class GetScopesEndpoint(MediationTermsService termsService) : Endpoint<Ge
     public override void Configure()
     {
         Get("/api/jurisdictions/{JurisdictionId}/scopes");
-        Description(endpoint => endpoint.Produces(404));
+        Description(endpoint => endpoint.Produces(404).WithTags("Scopes"));
         AllowAnonymous();
     }
 

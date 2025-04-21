@@ -9,7 +9,7 @@ public class DeleteTopologyEndpoint(MediationTermsService termsService) : Endpoi
     public override void Configure()
     {
         Delete("/api/topologies/{Id}");
-        Description(e => e.Produces(200));
+        Description(e => e.Produces(201).WithTags("Topologies"));
     }
 
     public override async Task HandleAsync(DeleteTopologyRequest req, CancellationToken ct)

@@ -1,6 +1,5 @@
 using FastEndpoints;
 using mediation.mediations.Application;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
 namespace mediation.mediations.Infrastructure.Api.Mediation;
@@ -10,7 +9,7 @@ public class CreateMediationEndpoint(MediationService mediationService) : Endpoi
     public override void Configure()
     {
         Post("/api/mediation/");
-        Description(endpoint => endpoint.Produces(200).WithGroupName("Mediation"));
+        Description(endpoint => endpoint.Produces(200).WithTags("Mediation"));
     }
 
     public override async Task HandleAsync(CreateMediationRequest request, CancellationToken ct)
@@ -35,6 +34,10 @@ public class CreateMediationEndpoint(MediationService mediationService) : Endpoi
                 .AddDefendant(defendant.Id, defendant.FirstName, defendant.LastName, defendant.Email,
                     defendant.Phone,
                     defendant.Country)
+                .SetJurisdiction(request.JurisdictionId)
+                .SetScope(request.ScopeId)
+                .SetSubject(request.Subject)
+                .SetDescription(request.Description)
                 .Build();
             
             await mediationService.CreateMediation(mediation);

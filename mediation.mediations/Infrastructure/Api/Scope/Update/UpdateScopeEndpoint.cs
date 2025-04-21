@@ -9,7 +9,7 @@ public class UpdateScopeEndpoint(MediationTermsService termsService) : Endpoint<
     public override void Configure()
     {
         Put("/api/scopes/{Id}");
-        Description(endpoint => endpoint.Produces(201));
+        Description(endpoint => endpoint.Produces(201).WithTags("Scopes"));
     }
 
     public override async Task HandleAsync(UpdateScopeRequest req, CancellationToken ct)

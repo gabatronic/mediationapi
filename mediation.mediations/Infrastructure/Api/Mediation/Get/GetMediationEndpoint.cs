@@ -10,8 +10,7 @@ public class GetMediationEndpoint(MediationService mediationService) : Endpoint<
     public override void Configure()
     {
         Get("/api/mediation/{Id}");
-        Description(e => e.Produces(200).WithGroupName("Mediation"));
-        AllowAnonymous();
+        Description(e => e.Produces(200).WithTags("Mediation"));
     }
 
     public override async Task HandleAsync(GetMediationRequest req, CancellationToken ct)

@@ -1,6 +1,7 @@
 using FastEndpoints;
 using Mediation.Plans.Application;
 using Mediation.Plans.Infrastructure.Api.Plan.List;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Plans.Infrastructure.Api.Plan.Get;
 
@@ -9,6 +10,7 @@ public class GetPlanEndpoint(PlansService service) : Endpoint<GetPlanRequest>
     public override void Configure()
     {
         Get("/api/plan/{id}");
+        Description(e => e.Produces(200).WithTags("Plans"));
         AllowAnonymous();
     }
 

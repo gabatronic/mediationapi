@@ -1,5 +1,6 @@
 using FastEndpoints;
 using mediation.mediations.Domain;
+using Microsoft.AspNetCore.Http;
 
 namespace mediation.mediations.Infrastructure.Api.Topology;
 
@@ -8,6 +9,7 @@ public class GetTopologiesEndpoint(IMediationTermsRepository termsRepository) : 
     public override void Configure()
     {
         Get("/api/scopes/{id}/topologies");
+        Description(e => e.Produces(200).WithTags("Topologies"));
         AllowAnonymous();
     }
 

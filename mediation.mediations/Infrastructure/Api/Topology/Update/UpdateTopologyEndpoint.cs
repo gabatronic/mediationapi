@@ -9,7 +9,7 @@ public class UpdateTopologyEndpoint(MediationTermsService termsService) : Endpoi
     public override void Configure()
     {
         Put("/api/topologies/{Id}");
-        Description(e => e.Produces(200));
+        Description(e => e.Produces(201).WithTags("Topologies"));
     }
 
     public override async Task HandleAsync(UpdateTopologyRequest req, CancellationToken ct)

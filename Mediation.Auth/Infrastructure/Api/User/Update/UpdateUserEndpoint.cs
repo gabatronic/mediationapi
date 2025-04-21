@@ -1,6 +1,7 @@
 using FastEndpoints;
 using Mediation.Auth.Application;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Auth.Infrastructure.Api.User.Update;
 
@@ -9,7 +10,7 @@ public class UpdateUserEndpoint(IUserRepository userRepository) : Endpoint<Updat
     public override void Configure()
     {
         Put("/api/users/{Id}");
-        Description(e => e.WithGroupName("Users"));
+        Description(e => e.WithTags("Users"));
     }
 
     public override async Task HandleAsync(UpdateUserRequest req, CancellationToken ct)

@@ -10,7 +10,7 @@ public class DeleteJurisdictionEndpoint(MediationTermsService termsService) : En
     public override void Configure()
     {
         Delete("/api/jurisdictions/{Id}");
-        Description(e => e.Produces(200).WithGroupName("Jurisdictions"));
+        Description(e => e.Produces(200).WithTags("Jurisdictions"));
     }
 
     public override async Task HandleAsync(DeleteJurisdictionRequest req, CancellationToken ct)

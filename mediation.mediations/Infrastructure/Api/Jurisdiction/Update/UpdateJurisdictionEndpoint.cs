@@ -10,7 +10,7 @@ public class UpdateJurisdictionEndpoint(MediationTermsService termsService) : En
     public override void Configure()
     {
         Put("/api/jurisdictions/{Id}");
-        Description(e => e.Produces(200).WithGroupName("Jurisdictions"));
+        Description(e => e.Produces(200).WithTags("Jurisdictions"));
     }
 
     public override async Task HandleAsync(UpdateJurisdictionRequest req, CancellationToken ct)

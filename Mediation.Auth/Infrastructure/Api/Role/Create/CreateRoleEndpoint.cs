@@ -1,28 +1,26 @@
 using FastEndpoints;
 using Mediation.Auth.Application;
-using Mediation.Auth.Domain;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Mediation.Auth.Infrastructure.Api.Role.Create;
 
-public class CreateRoleEndpoint(IRoleRepository roleRepository) : Endpoint<CreateRoleRequest>
+public class CreateRoleEndpoint(RoleService roleService) : Endpoint<CreateRoleRequest>
 {
     public override void Configure()
     {
         Post("/api/roles");
-        Description(e => e.WithGroupName("Roles"));
+        Description(e => e.WithTags("Roles"));
+        Summary(s => 
+        {
+            s.Summary = "Create a new role";
+            s.Description = "Creates a new role with the specified information";
+        });
     }
 
     public override async Task HandleAsync(CreateRoleRequest req, CancellationToken ct)
     {
-        var role = new Role
-        {
-            Id = req.Id,
-            Name = req.Name,
-            Description = req.Description
-        };
-
-        var result = await roleRepository.Add(role);
+        var result = await roleService.CreateRole(req.Id, req.Name, req.Description);
         
         if (result)
             await SendCreatedAtAsync("/api/roles", null, ct);
