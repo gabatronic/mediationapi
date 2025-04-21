@@ -14,7 +14,7 @@ public class PlansService(IPlanRepository repository)
         return await repository.GetByIdAsync(id);
     }
     
-    public async Task<bool> CreatePlan(Guid id, string name, string description = "", double cost = 0)
+    public async Task<bool> CreatePlan(Guid id, string name, string subtitle = "", string description = "", double cost = 0)
     {
         var planExists = await repository.GetByIdAsync(id);
         if (planExists != null)
@@ -24,6 +24,7 @@ public class PlansService(IPlanRepository repository)
         { 
             Id = id, 
             Name = name,
+            SubTitle = subtitle,
             Description = description,
             Cost = cost
         });

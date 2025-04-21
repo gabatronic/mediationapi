@@ -20,6 +20,7 @@ public class GetPlansEndpoint(PlansService plansService) : Endpoint<GetPlansRequ
         var result = plans.Select(p => new PlanDto(
             p.Id,
             p.Name,
+            p.SubTitle,
             p.Description,
             p.Cost,
             p.Features.Select(f => new PlanFeatureDto(f.Id, f.Description))

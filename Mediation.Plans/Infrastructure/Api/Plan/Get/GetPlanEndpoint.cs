@@ -23,6 +23,6 @@ public class GetPlanEndpoint(PlansService service) : Endpoint<GetPlanRequest>
             return;
         }
         
-        await SendAsync(new PlanDto(plan.Id, plan.Name, plan.Description, plan.Cost, plan.Features?.Select(f => new PlanFeatureDto(f.Id, f.Description)) ?? []), 200, cancellationToken);
+        await SendAsync(new PlanDto(plan.Id, plan.Name, plan.SubTitle, plan.Description, plan.Cost, plan.Features?.Select(f => new PlanFeatureDto(f.Id, f.Description)) ?? []), 200, cancellationToken);
     }
 }
