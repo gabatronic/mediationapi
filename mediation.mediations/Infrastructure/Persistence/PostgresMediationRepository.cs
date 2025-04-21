@@ -17,8 +17,12 @@ public class PostgresMediationRepository(MediationDbContext dbContext) : IMediat
         return await dbContext.SaveChangesAsync() > 0;
     }
 
-    public async Task<bool> Delete(Mediation mediation)
+    public async Task<bool> Delete(Guid id)
     {
+        var mediation = await dbContext.Mediations.FindAsync(id);
+        if (mediation == null)
+            return false;   
+        
         dbContext.Mediations.Remove(mediation);
         return await dbContext.SaveChangesAsync() > 0;
     }

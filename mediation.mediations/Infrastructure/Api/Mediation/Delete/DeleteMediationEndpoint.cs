@@ -17,19 +17,12 @@ public class DeleteMediationEndpoint(MediationService mediationService) : Endpoi
     {
         try
         {
-            var mediation = await mediationService.GetMediationById(req.Id);
-            if (mediation == null)
-            {
-                await SendNotFoundAsync(ct);
-                return;
-            }
-            
-            await mediationService.DeleteMediation(mediation);
+            var mediation = await mediationService.DeleteMediation(req.Id);
             await SendOkAsync(ct);
         }
-        catch (Exception ex)
+        catch (ArgumentException)
         {
-            await SendErrorsAsync(500, ct);
+            await SendErrorsAsync(404, ct);
         }
     }
 }

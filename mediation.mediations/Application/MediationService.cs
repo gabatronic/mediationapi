@@ -28,7 +28,15 @@ public class MediationService(
         await ValidateMediation(mediation);
         return await mediationRepository.Update(mediation);
     }
-    public async Task<bool> DeleteMediation(Mediation mediation) => await mediationRepository.Delete(mediation);
+
+    public async Task<bool> DeleteMediation(Guid id)
+    {
+        var mediationExists = await mediationRepository.GetById(id);
+        if (mediationExists == null)
+            throw new ArgumentException($"Mediation with id {id} not found");
+        
+        return await mediationRepository.Delete(id);   
+    }
     
     public async Task<IEnumerable<Mediation>> GetAllMediations() => await mediationRepository.GetAll();
 
