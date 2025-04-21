@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FastEndpoints" Version="6.0.0" />
+      <PackageReference Include="FastEndpoints.Security" Version="6.0.0" />
+      <PackageReference Include="FastEndpoints.Swagger" Version="6.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Infrastructure\Api\Role\AssingRole\" />
+      <Folder Include="Infrastructure\Api\Role\Create\" />
+      <Folder Include="Infrastructure\Api\Role\Delete\" />
+      <Folder Include="Infrastructure\Api\Role\List\" />
+      <Folder Include="Infrastructure\Api\Role\UnassignRole\" />
+      <Folder Include="Infrastructure\Api\Role\Update\" />
+      <Folder Include="Infrastructure\Api\User\Create\" />
+      <Folder Include="Infrastructure\Api\User\Delete\" />
+      <Folder Include="Infrastructure\Api\User\Get\" />
+      <Folder Include="Infrastructure\Api\User\List\" />
+      <Folder Include="Infrastructure\Api\User\ResetPassword\" />
+      <Folder Include="Infrastructure\Api\User\Update\" />
+    </ItemGroup>
+
+</Project>
