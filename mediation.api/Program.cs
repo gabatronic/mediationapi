@@ -1,20 +1,33 @@
 using System.Threading.Channels;
 using FastEndpoints;
-using mediation.mediations.Infrastructure;
+using FastEndpoints.Swagger;
+using  mediation.mediations.Infrastructure;
 using MediationWorker;
 
-var builder = WebApplication.CreateSlimBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-var newMediationItemChannelOptions = new BoundedChannelOptions(capacity: 1000)
+// Add services to the container.
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
+
+
+builder.Services.AddFastEndpoints().AddSwaggerDocument();
+builder.Services.AddEndpointsApiExplorer();
+var chnBoundedChannelOptions = new BoundedChannelOptions(2000)
 {
-    FullMode = BoundedChannelFullMode.Wait,
-    SingleReader = true,
-    SingleWriter = false
+    SingleWriter = true,
+    SingleReader = true
 };
-
-builder.Services.AddSingleton(Channel.CreateBounded<NewMediationItem>(options: newMediationItemChannelOptions));
+builder.Services.AddSingleton(Channel.CreateBounded<NewMediationItem>(chnBoundedChannelOptions));
 builder.Services.AddMediationServices(builder.Configuration);
-builder.Services.AddFastEndpoints();
+
 var app = builder.Build();
-app.UseFastEndpoints();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+
+app.UseHttpsRedirection();
+app.UseFastEndpoints().UseSwaggerGen();
 app.Run();

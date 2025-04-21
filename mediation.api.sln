@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediation.api", "mediation.api\mediation.api.csproj", "{3F6191C3-0376-4761-9311-0835CF005B8F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediation.mediations", "mediation.mediations\mediation.mediations.csproj", "{05C8A764-9776-4EF2-B81C-29A11C8AE891}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediationWorker", "MediationWorker\MediationWorker.csproj", "{43B17EE9-2D68-46E3-A25A-1B1D5F2D0161}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediation.api", "mediation.api\mediation.api.csproj", "{80226D6F-868A-4A4A-9917-97D84476B5D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,10 +12,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F6191C3-0376-4761-9311-0835CF005B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F6191C3-0376-4761-9311-0835CF005B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F6191C3-0376-4761-9311-0835CF005B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F6191C3-0376-4761-9311-0835CF005B8F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05C8A764-9776-4EF2-B81C-29A11C8AE891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05C8A764-9776-4EF2-B81C-29A11C8AE891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05C8A764-9776-4EF2-B81C-29A11C8AE891}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -24,5 +20,9 @@ Global
 		{43B17EE9-2D68-46E3-A25A-1B1D5F2D0161}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43B17EE9-2D68-46E3-A25A-1B1D5F2D0161}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43B17EE9-2D68-46E3-A25A-1B1D5F2D0161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80226D6F-868A-4A4A-9917-97D84476B5D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

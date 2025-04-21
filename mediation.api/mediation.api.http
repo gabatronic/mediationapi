@@ -1,11 +1,6 @@
-@mediation.api_HostAddress = http://localhost:5012
+@mediation.api_HostAddress = http://localhost:5231
 
-GET {{mediation.api_HostAddress}}/todos/
-Accept: application/json
-
-###
-
-GET {{mediation.api_HostAddress}}/todos/1
+GET {{mediation.api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
