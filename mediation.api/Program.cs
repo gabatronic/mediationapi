@@ -21,6 +21,7 @@ var chnBoundedChannelOptions = new BoundedChannelOptions(2000)
 builder.Services.AddSingleton(Channel.CreateBounded<NewMediationItem>(chnBoundedChannelOptions));
 builder.Services.AddMediationServices(builder.Configuration);
 builder.Services.AddPlansServices(builder.Configuration);
+builder.Services.AddHostedService<MediationWorker.MediationWorker>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
